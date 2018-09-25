@@ -40,8 +40,15 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: #333;
-  background: url(images/goletabeachpark.jpg) no-repeat center center fixed;
+  background:
+    /* top, transparent black, faked with gradient */ 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5), 
+      rgba(0, 0, 0, 0.5)
+    ),
+    /* bottom, image */
+    url(images/lab-resized.jpg) no-repeat center center fixed;
+  };
 }
 body {
   color: #fff;
@@ -179,7 +186,7 @@ p {
   }
 }
 
-@media (min-width: 62em) {
+@media (min-width: 50em) {
   body{
     text-align: center;
   }
@@ -187,6 +194,6 @@ p {
   .masthead,
   .mastfoot,
   .cover-container {
-    width: 62rem;
+    width: 50rem;
   }
 }

@@ -4,6 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
+    <meta name="theme-color" content="#ffffff">
+
     <title>UCSB IEEE</title>
 
     <!-- Bootstrap core CSS -->
@@ -14,7 +24,6 @@
   </head>
 
   <body>
-
     <div class="site-wrapper">
       <div class="site-wrapper-inner">
         <div class="cover-container">
@@ -24,14 +33,26 @@
             </div>
           </div>
 
-          <div class="inner cover">
-            <h1 class="cover-heading">UCSB IEEE</h1>
-            <h1>&nbsp</h1>
-            <h2>We're revamping our website for the new year with many new features.<br>Stay tuned by joining our email list!</h2>
-            <p>&nbsp</p>
-            <p class="lead">
-              <a href="https://groups.google.com/d/forum/ucsb-ieee" class="btn btn-lg btn-primary">Join Emailing List</a> 
-              <a href="mailto:ucsbieeeclub@gmail.com" class="btn btn-lg btn-secondary" target="_blank">Email Us</a>
+          <div class="inner cover text-white">
+            <h1 class="cover-heading">Join UCSB IEEE!</h1>
+            <h1>&nbsp;</h1>
+            <h2>Thanks for your interest! Enter your email below to add yourself to our email list, where we send notifications about our events, projects, workshops, and more!</h2>
+            <p>&nbsp;</p>
+
+            <div hidden class="p-3 mb-2 bg-danger text-white" id="emailWarning">This email address isn't valid. Please try again.</div>
+
+            <div class="form-group">
+              <label for="emailInput">Email address</label>
+              <input type="email" class="form-control" id="emailInput" placeholder="netid@ucsb.edu">
+            </div>
+
+            <button type="button" onclick="appendDomain('ucsb.edu')" class="btn btn-secondary">@ucsb.edu</button>
+            <button type="button" onclick="appendDomain('gmail.com')" class="btn btn-secondary">@gmail.com</button>
+            <button type="button" onclick="appendDomain('yahoo.com')" class="btn btn-secondary">@yahoo.com</button>
+            <button type="button" onclick="appendDomain('outlook.com')" class="btn btn-secondary">@outlook.com</button>
+
+            <p class="lead"><br><br>
+              <button type="button" onclick="submitEmail()" class="btn btn-lg btn-primary">Submit</button> 
             </p>
           </div>
 
@@ -44,10 +65,34 @@
       </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitle">Success!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Success! You have been added to the email list!
+          </div>
+          <div class="modal-body" id="modalEmail"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="index.js" type="text/javascript"></script>
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
