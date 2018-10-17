@@ -26,7 +26,7 @@ function submitEmail() {
 
 		  	setTimeout(function() {
 		  		$('#myModal').modal('hide');
-        },5000);
+        	},5000);
 		  }
 		});
 	}
