@@ -1,12 +1,23 @@
+const emailField = document.getElementById("emailInput");
+const modalTitle = document.getElementById("modalTitle");
+const modalBody = document.getElementById("modalBody");
+const modalEmail = document.getElementById("modalEmail");
+
 function submitEmail() {
-	//Get email from form
-	var email = document.getElementById("emailInput").value;
+	// Get email from form
+	var email = emailField.value;
 
 	if(email.match(/.+\@.+\..+/g) != null) {
-		//Hide warning div
+		// Hide warning div
 		$('#emailWarning').attr("hidden", true);
 
-		//Send it to the login server to verify login
+		// Show modal div, display waiting
+		$('#loadingIcon').removeAttr("hidden");
+		modalTitle.innerHTML = "Please Wait";
+		modalBody.innerHTML = modalEmail.value = "";
+		$('#myModal').modal('show');
+
+		// Send email address to mailing list endpoint
 		var urlstring = "https://us-central1-ucsb-ieee.cloudfunctions.net/addToEmailList?email=" + email;
 
 		var settings = {
@@ -18,11 +29,13 @@ function submitEmail() {
 
 		$.ajax(settings).done(function (response) {
 			console.log(response);
-		  if(response.success == true) { //valid
-		  	$('#myModal').modal('show');
-
-		  	document.getElementById("modalEmail").innerHTML = "Email: " + response.email;
-		  	document.getElementById("emailInput").value = "";
+		  if(response.success) { 
+		  	// Valid, show success screen
+		  	$('#loadingIcon').attr("hidden", true);
+		  	modalTitle.innerHTML = "Success!";
+		  	modalBody.innerHTML = "Success! We will add you to the mailing list shortly!";
+		  	modalEmail.innerHTML = "Email: " + response.email;
+		  	emailField.value = "";
 
 		  	setTimeout(function() {
 		  		$('#myModal').modal('hide');
@@ -31,26 +44,31 @@ function submitEmail() {
 		});
 	}
 	else {
-		//Show warning div
+		// Show warning div
 		$('#emailWarning').removeAttr("hidden");
 	}
 }
 
 function appendDomain(domain) {
-	//Get email from form
-	var email = document.getElementById("emailInput").value;
+	// Get email from form
+	var email = emailField.value;
 
-	//Get part before @ symbol
+	// Get part before @ symbol
 	var emailPrefix = email.substr(0, email.indexOf('@')); 
 
 	if(emailPrefix == "") {
-		//There was no @ symbol, just append the email domain
+		// There was no @ symbol, just append the email domain
 		var newEmail = email + "@" + domain;
 	}
 	else {
-		//There was an @ symbol, append email domain to emailPrefix
+		// There was an @ symbol, append email domain to emailPrefix
 		var newEmail = emailPrefix + "@" + domain;
 		
 	}
-	document.getElementById("emailInput").value = newEmail;
+	emailField.value = newEmail;
+}
+
+function clearEmail() {
+	emailField.value = "";
+	emailField.focus();
 }

@@ -32,29 +32,15 @@ a:hover {
   border: .05rem solid #fff;
 }
 
-
-/*
- * Base structure
- */
-
+/* Base structure */
 html,
 body {
   height: 100%;
-  background:
-    /* top, transparent black, faked with gradient */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.5), 
-      rgba(0, 0, 0, 0.5)
-    ),
-    /* bottom, image */
-    url(images/lab-resized.jpg) no-repeat center center fixed;
-  };
-}
-body {
-  color: #fff;
+  background: url(images/slidebg.jpg) no-repeat center center fixed;
+  background-size: cover;
   text-align: center;
-  text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
 }
+
 h1 {
   font-size: 400%;
   font-family: "Produkt", sans-serif;
@@ -93,11 +79,7 @@ p {
   padding: 2rem;
 }
 
-
-/*
- * Header
- */
-
+/* Header */
 .masthead {
   margin-bottom: 2rem;
 }
@@ -137,42 +119,31 @@ p {
   }
 }
 
-
-/*
- * Cover
- */
-
+/* Cover */
 .cover {
   padding: 0 1.5rem;
 }
+
 .cover .btn-lg {
   padding: .75rem 1.25rem;
   font-weight: bold;
 }
 
-
-/*
- * Footer
- */
-
-.mastfoot {
-  color: rgba(255,255,255,.5);
+.cover-heading {
+  margin-bottom: 2rem;
 }
 
+.lead {
+  margin-top: 2rem;
+}
 
-/*
- * Affix and center
- */
+/* Affix and center */
 
 @media (min-width: 40em) {
-  /* Pull out the header and footer */
+  /* Pull out the header */
   .masthead {
     position: fixed;
     top: 0;
-  }
-  .mastfoot {
-    position: fixed;
-    bottom: 0;
   }
   /* Start the vertical centering */
   .site-wrapper-inner {
@@ -180,20 +151,79 @@ p {
   }
   /* Handle the widths */
   .masthead,
-  .mastfoot,
   .cover-container {
     width: 100%; /* Must be percentage or pixels for horizontal alignment */
   }
 }
 
 @media (min-width: 50em) {
-  body{
-    text-align: center;
-  }
-
   .masthead,
-  .mastfoot,
   .cover-container {
     width: 50rem;
+  }
+}
+
+/* CSS Loading Icon */
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.lds-ellipsis div {
+  position: absolute;
+  top: 27px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #003660;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.lds-ellipsis div:nth-child(1) {
+  left: 6px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(2) {
+  left: 6px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(3) {
+  left: 26px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(4) {
+  left: 45px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(19px, 0);
   }
 }

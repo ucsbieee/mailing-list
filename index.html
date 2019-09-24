@@ -32,15 +32,13 @@
         <div class="cover-container">
           <div class="masthead clearfix">
             <div class="inner">
-              <img src="images/logo.png" width="160" height="75" class="img-fluid" alt="UCSB IEEE">
+              <img src="images/logo.png" width="176" height="75" class="img-fluid" alt="UCSB IEEE">
             </div>
           </div>
 
           <div class="inner cover text-white">
             <h1 class="cover-heading">Join UCSB IEEE!</h1>
-            <h1>&nbsp;</h1>
-            <h2>Thanks for your interest! Enter your email below to add yourself to our email list, where we send notifications about our events, projects, workshops, and more!</h2>
-            <p>&nbsp;</p>
+            <h2 class="cover-heading">Thanks for your interest! Add your email to our mailing list, where we'll send you notifications about our first meeting, projects, workshops, and more!</h2>
 
             <div hidden class="p-3 mb-2 bg-danger text-white" id="emailWarning">This email address isn't valid. Please try again.</div>
 
@@ -53,16 +51,11 @@
             <button type="button" onclick="appendDomain('gmail.com')" class="btn btn-secondary">@gmail.com</button>
             <button type="button" onclick="appendDomain('yahoo.com')" class="btn btn-secondary">@yahoo.com</button>
             <button type="button" onclick="appendDomain('outlook.com')" class="btn btn-secondary">@outlook.com</button>
+            <button type="button" onclick="clearEmail()" class="btn btn-secondary">Clear Email</button>
 
-            <p class="lead"><br><br>
+            <p class="lead">
               <button type="button" onclick="submitEmail()" class="btn btn-lg btn-primary">Submit</button> 
             </p>
-          </div>
-
-          <div class="mastfoot">
-            <div class="inner">
-              <p>UCSB IEEE. Trailer 699, Room 101, University of California, Santa Barbara, CA 93107.</p>
-            </div>
           </div>
         </div>
       </div>
@@ -73,15 +66,19 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modalTitle">Success!</h5>
+            <h5 class="modal-title" id="modalTitle"></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            Success! You have been added to the email list!
+          <div id="loadingIcon" hidden>
+            <!-- Loading Icon -->
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
           </div>
-          <div class="modal-body" id="modalEmail"></div>
+          <div class="modal-body">
+            <p id="modalBody"></p>
+            <p id="modalEmail"></p>
+          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
           </div>
@@ -100,3 +97,4 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
+
