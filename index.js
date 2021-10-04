@@ -18,14 +18,19 @@ function submitEmail() {
 		$('#myModal').modal('show');
 
 		// Send email address to mailing list endpoint
-		var urlstring = "https://nextjs.ucsbieee.org/api/mailing-list/add?email=" + email;
+		var urlstring = "https://nextjs.ucsbieee.org/api/mailing-list/add";
+                
+                var body = {
+                    email: email
+                };
 
 		var settings = {
 		  "async": true,
 		  "crossDomain": true,
 		  "url": urlstring,
-		  "method": "GET"
-		}
+		  "method": "POST",
+                  "body": new URLSearchParams(body).toString()
+		};
 
 		$.ajax(settings).done(function (response) {
 			console.log(response);
