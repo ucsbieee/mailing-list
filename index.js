@@ -20,16 +20,14 @@ function submitEmail() {
         // Send email address to mailing list endpoint
         var urlstring = "https://nextjs.ucsbieee.org/api/mailing-list/add";
 
-        var body = {
-            email: email
-        };
-
         var settings = {
             "async": true,
             "crossDomain": true,
             "url": urlstring,
             "method": "POST",
-            "body": new URLSearchParams(body).toString()
+            "data": {
+                email: email
+            }
         };
 
         $.ajax(settings).done(function (response) {
