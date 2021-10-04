@@ -18,7 +18,7 @@ function submitEmail() {
 		$('#myModal').modal('show');
 
 		// Send email address to mailing list endpoint
-		var urlstring = "https://us-central1-ucsb-ieee.cloudfunctions.net/addToEmailList?email=" + email;
+		var urlstring = "https://nextjs.ucsbieee.org/api/mailing-list/add?email=" + email;
 
 		var settings = {
 		  "async": true,
